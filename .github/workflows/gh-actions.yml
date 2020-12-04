@@ -33,8 +33,7 @@ jobs:
       # Run the Docker build process
       - name: Docker Build
         run: 
-          using: 'docker'
-          image: 'Dockerfile'
+          docker build . --file Dockerfile --tag public-ip-printer:$(date +%s)
           
             
 
