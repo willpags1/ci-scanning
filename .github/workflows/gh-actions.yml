@@ -46,7 +46,6 @@ jobs:
         with:
           context: ./
           file: ./Dockerfile
-          push: true
           tags: docker-test-repo/team1-public-ip-printer:TAG
           
       - name: Image digest
