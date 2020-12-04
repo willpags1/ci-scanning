@@ -48,5 +48,3 @@ jobs:
           tag=$d--$(echo ${GITHUB_SHA} | cut -c1-8)
           docker build -t dolpheus.jfrog.io/docker-test-repo/public-ip-printer:$tag .
           docker push dolpheus.jfrog.io/docker-test-repo/public-ip-printer:$tag
-          echo "letting jFrog sync up for a moment" && sleep 5
-          docker tag dolpheus.jfrog.io/docker-test-repo/public-ip-printer:2020-12-04--3b730dc8 dolpheus.jfrog.io/docker-test-repo/public-ip-printer:latest
