@@ -25,15 +25,19 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
-      # Log into Artifactory & do some docker stuff
-      - name: Login to DockerHub Registry
-        run:
+      # Log into Artifactory & do the docker build
+      - name: Login to jFrog and Build
+        env:
+          TAG: $(date +%s)
+        run: |
           docker login -u ${{ secrets.REGISTRY_USERNAME }} -p ${{ secrets.REGISTRY_PASSWORD }} dolpheus.jfrog.io
-      
-      # Run the Docker build process
-      - name: Docker Build
+          docker build . --file Dockerfile --tag team1-public-ip-printer:TAG
+          docker push dolpheus.jfrog.io/docker-test-repo/team1-public-ip-printer:TAG
+          
+      # spare block
+      - name: Spare block
         run: 
-          docker build . --file Dockerfile --tag public-ip-printer:$(date +%s)
+          echo "hello world"
           
             
 
