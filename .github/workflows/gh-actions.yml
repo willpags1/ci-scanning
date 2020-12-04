@@ -40,13 +40,13 @@ jobs:
       # spare block
       - name: Docker build & Tag
         id: docker_build
-        env:
-          TAG: $(date +%s)
         uses: docker/build-push-action@v2
         with:
           context: ./
           file: ./Dockerfile
-          tags: docker-test-repo/team1-public-ip-printer:TAG
+          #registry: dolpheus.jfrog.io
+          repository: DolpheusLabs/ci-scanning/${{ github.sha }}
+          tag_with_ref: true
           
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
