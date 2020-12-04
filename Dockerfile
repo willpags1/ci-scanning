@@ -4,6 +4,7 @@ COPY main.py .
 COPY requirements.txt .
 RUN mkdir /usr/src/app \
   && pip install pipenv \
-  && cd /usr/src/\
-  && pipenv install requests
+  && cd /usr/src/ \
+  && pipenv install requests \
+  && pipenv shell
 CMD ["python", "/usr/src/main.py"]
