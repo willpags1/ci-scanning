@@ -17,7 +17,7 @@ dolpheus.jfrog.io
 
 ## Steps: 
 
-1. Open your GitHub account and create a new repository for today's lesson.
+1. Open your GitHub account and create a new repository for today's lesson. 
 
 2. Go to the Secrets page, and create 2 new secrets: 
 
@@ -27,7 +27,7 @@ dolpheus.jfrog.io
 
 3. Go to GitHub Actions and create a new sample action. Enter the below:
 
-  - uses: actions/checkout@v2
+  - uses: actions/checkout@v2   <-------------------- this should be what's already on line 26. 
       - name: Login to DockerHub Registry
         run: docker login -u ${{ secrets.REGISTRY_USERNAME }} -p ${{ secrets.REGISTRY_PASSWORD }} dolpheus.jfrog.io
 
