@@ -4,6 +4,7 @@ Security Mountaineering, Dec. 4th lesson.
 
 We'll be exploring dependency management, vulnerability scanning, and CI integration this week. 
 
+# START THE RECORDING!!!
 
 ## Teams: 
 securitymountaineeringteam1@dolpheus.com
