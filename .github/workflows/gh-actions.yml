@@ -19,8 +19,6 @@ jobs:
   pre-build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    env:
-      SHA8: ${GITHUB_SHA:8}
     
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -47,6 +45,6 @@ jobs:
         run: |
           docker login -u ${{ secrets.REGISTRY_USERNAME }} -p ${{ secrets.REGISTRY_PASSWORD }} dolpheus.jfrog.io
           d=$(date +%Y-%m-%d)
-          tag=$d--$SHA8
+          tag=$d--$(echo ${GITHUB_SHA} | cut -c1-8)
           docker build -t dolpheus.jfrog.io/docker-test-repo/public-ip-printer:$tag .
           docker push dolpheus.jfrog.io/docker-test-repo/public-ip-printer:$tag
