@@ -17,6 +17,20 @@ dolpheus.jfrog.io
 
 ## Steps: 
 
+1. Open your GitHub account and create a new repository for today's lesson.
+
+2. Go to the Secrets page, and create 2 new secrets: 
+
+`REGISTRY_USERNAME = <username listed above for your team>`
+
+`REGISTRY_PASSWORD = <Password that I'll give out just in time during the class>`
+
+3. Go to GitHub Actions and create a new sample action. Enter the below:
+
+  - uses: actions/checkout@v2
+      - name: Login to DockerHub Registry
+        run: docker login -u ${{ secrets.REGISTRY_USERNAME }} -p ${{ secrets.REGISTRY_PASSWORD }} dolpheus.jfrog.io
+
 According to the repository permission, you will need to login to your repository with docker login command
 
 `docker login dolpheus.jfrog.io`
