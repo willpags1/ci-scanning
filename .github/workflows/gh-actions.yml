@@ -31,7 +31,7 @@ jobs:
           docker login -u ${{ secrets.REGISTRY_USERNAME }} -p ${{ secrets.REGISTRY_PASSWORD }} dolpheus.jfrog.io
           d=$(date +%Y-%m-%d--%H-%M-%S--%N)
           tag=$d-${{ matrix.os }}-${{ github.sha }}
-          docker build -t public-ip-printer:$tag .
+          docker build -t docker-test-repo/public-ip-printer:$tag .
           docker push dolpheus.jfrog.io/docker-test-repo/public-ip-printer:$tag
           
       # Docker Build, Tag, & Image Digest
