@@ -32,18 +32,19 @@ jobs:
           python-version: 3.7
       - name: Install Black
         run: pip install black
-      - name: Run black --check .
+      - name: Blacken the python file(s)
         run: black .
 
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
+# Due to there not being a way to set depends_on, I'm running these 2 parts into a single workflow.
+  #build:
+    #runs-on: ubuntu-latest
+    #steps:
+     # - uses: actions/checkout@v2
       # Log into Artifactory
       - name: jFrog Login, Docker build, & Docker push
         run: |
           docker login -u ${{ secrets.REGISTRY_USERNAME }} -p ${{ secrets.REGISTRY_PASSWORD }} dolpheus.jfrog.io
-          d=$(date +%Y-%m-%d--%H-%M-%S--%N)
-          tag=$d-${{ matrix.os }}-${{ github.sha }}
+          d=$(date +%Y-%m-%d--%N)
+          tag=$d-${{ github.sha::8 }}
           docker build -t dolpheus.jfrog.io/docker-test-repo/public-ip-printer:$tag .
           docker push dolpheus.jfrog.io/docker-test-repo/public-ip-printer:$tag
