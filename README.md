@@ -109,12 +109,15 @@ To be clear, I do NOT recommend the :latest tag. This is great for personal proj
 * Because there's a semantically versioned callout for jinja 2.9 here, we know that we can build exactly this image in the future.
 * We could try to improve this vulnerability report by updating the version, or potentially even making it versionless. Another option would be to use the >= or some of the fancy operators to get the version in a range. 
 * another option.... Jijna is a web template engine for Django; Django is a webapp framework using a model-template-view architecture. Do you see any references to that in the main.py? Here's how you'd know - an example showing the import statement from the top of the file and something using the template engine.
-
+```
 >>> from jinja2 import Template
->>> template = Template('Hello {{ name }}!')
->>> template.render(name='John Doe')
-u'Hello John Doe!'
 
+>>> template = Template('Hello {{ name }}!')
+
+>>> template.render(name='John Doe')
+
+u'Hello John Doe!'
+```
 
 **so... we can probably remove this. Let's comment out that line and add a note as to why so that if something breaks we can put it back**
 
